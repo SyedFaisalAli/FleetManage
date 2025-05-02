@@ -1,7 +1,5 @@
 import argparse
-import sys
 import logging
-from fastmcp import Client as MCPClient
 from qwen_agent.agents import Assistant
 from qwen_agent.utils.output_beautify import typewriter_print
 
@@ -13,12 +11,15 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 
 SSE_URL = "http://localhost:8888/sse"
 
-mcpclient = MCPClient(SSE_URL)
 
 def init_agent_service():
     llm_cfg = {
         "model": "qwen3:1.7b",
         "model_server": "http://localhost:11434/v1",
+        "generate_cfg": {
+            "temperature": 0.6,
+            "top_p": 0.95,
+        }
         # "temperature": 0.3,
         # "max_tokens": 512,
         # "top_p": 0.95,
