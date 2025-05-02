@@ -1,0 +1,8 @@
+# MCP SDK
+mcp
+
+# System interaction
+psutil
+
+# Networking
+netifaces2

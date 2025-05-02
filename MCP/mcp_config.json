@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "network-diagnostics": {
+      "command": "/mnt/data/FleetManage/MCP/venv/bin/python",
+      "args": ["-m", "network_diagnostics_server.server"],
+      "disabled": false,
+      "alwaysAllow": []
+    }
+  }
+}
