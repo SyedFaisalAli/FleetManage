@@ -1,0 +1,7 @@
+body {
+  flex-direction: column;
+}
+
+#root {
+  width: 100%;
+}
