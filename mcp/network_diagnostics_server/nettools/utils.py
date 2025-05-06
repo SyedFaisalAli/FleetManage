@@ -1,5 +1,63 @@
 import netifaces
-import os
+import configparser
+import io
+from typing import Dict, Any
+
+
+def dict_to_ini_string(config_dict: Dict[str, Dict[str, Any]]) -> str:
+    """
+    Converts a nested dictionary into a string formatted as an INI file
+    using configparser.
+
+    Args:
+        config_dict: A dictionary where top-level keys are section names
+                     (strings), and their values are dictionaries of key-value
+                     pairs for that section. Values will be converted to strings.
+
+                     Example:
+                     {
+                         'Match': {
+                             'Name': 'eth0',
+                             'Type': 'ether'
+                         },
+                         'Network': {
+                             'DHCP': 'yes',
+                             'Address': '192.168.1.100/24'
+                         }
+                     }
+
+    Returns:
+        A string containing the configuration in INI format.
+    """
+    # Create a ConfigParser object.
+    # allow_no_value=True: Allows keys without values (e.g., [Section]\nKey\n[Section2])
+    # delimiters=('='): Use '=' as the key-value separator, common in INI/systemd
+    config = configparser.ConfigParser(delimiters=('='))
+
+    # Iterate through the input dictionary
+    for section, keys in config_dict.items():
+        # Add each top-level key as a section
+        # Avoid trying to add the default section explicitly if named '[DEFAULT]'
+        if section != configparser.DEFAULTSECT:
+             # Ensure section name is a string
+             config.add_section(str(section))
+
+        # Add key-value pairs to the current section
+        for key, value in keys.items():
+            # configparser.set expects strings for key and value.
+            # Convert both to string explicitly.
+            config.set(str(section), str(key), str(value))
+
+    # Use io.StringIO to capture the output of config.write() into a string
+    # StringIO acts like a text file in memory
+    with io.StringIO() as string_buffer:
+        # Write the configuration to the buffer
+        config.write(string_buffer)
+        # Get the accumulated string from the buffer
+        ini_string = string_buffer.getvalue()
+
+    return ini_string
+
 
 def get_default_interface():
     """

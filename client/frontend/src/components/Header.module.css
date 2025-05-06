@@ -1,38 +1,45 @@
 .header {
     height: 56px;
-    margin-bottom: 120px;
-    background-color: var(--mantine-color-body);
-    border-bottom: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
-  }
-  
-  .inner {
+    margin-bottom: 50px;
+    background-color: #393e46;
+    border-bottom: 2px solid #948979;
+}
+
+.inner {
     height: 56px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+}
 
-  .title {
+.title {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
-  }
-  
-  .link {
+    font-size: 30px;
+    color: lightgray;
+}
+
+.title span {
+    font-weight: 100;
+}
+
+.link {
     display: block;
     line-height: 1;
     padding: 8px 12px;
     border-radius: var(--mantine-radius-sm);
     text-decoration: none;
-    color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
+    color: lightgray;
     font-size: var(--mantine-font-size-sm);
     font-weight: 500;
-  
+
     @mixin hover {
-      background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+        background-color: #4d5159;
+        color: lightgray;
     }
-  
+
     [data-mantine-color-scheme] &[data-active] {
-      background-color: var(--mantine-color-blue-filled);
-      color: var(--mantine-color-white);
+        background-color: #475466;
+        color: var(--mantine-color-white);
     }
-  }
+}

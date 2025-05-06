@@ -1,5 +1,6 @@
 body {
   flex-direction: column;
+  background-color: #ccc;
 }
 
 #root {
