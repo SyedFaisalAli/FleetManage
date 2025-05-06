@@ -8,7 +8,8 @@ For more details on the architecture, see report.pdf.
 
 ## Requirements
 
-- Python 3.8 or higher
+- Python 3.8 or higher for backend
+- NodeJS / NPM to build frontend
 - Ollama or any other compatible server that provides an OpenAI-compatible API endpoint
 
 ## Setup
@@ -32,14 +33,22 @@ docker run -d --gpus=all -v ollama:/root/.ollama -p 11434:11434 --name ollama ol
 docker exec ollama ollama pull qwen3:1.7b
 ```
 
-### 3. Install and run MCP and Agent
+### 3. Build Frontend
+```bash
+cd frontend
+npm install
+npm run build
+cd ..
+```
+
+### 4. Install and run MCP and Agent
 
 ```bash
 # Install through pipx
 pipx install .
 ```
 
-### 3. Run the Network Troubleshooting Client
+### 5. Run the Network Troubleshooting Client
 
 First, make sure the MCP server is running:
 
