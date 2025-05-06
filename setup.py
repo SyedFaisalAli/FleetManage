@@ -15,6 +15,6 @@ setup(
         ],
     },
     package_data={
-        'netassist': ['static/**/*']
+        'netmcp': ['static/**/*']
     }
 )

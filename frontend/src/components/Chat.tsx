@@ -2,6 +2,14 @@ import { useRef, useState, useEffect } from 'react';
 import { ScrollArea, Container, AppShell, Textarea, Button, Group, Stack } from '@mantine/core';
 import { MessageProps, ChatMessage } from './ChatMessage';
 
+function websocketProtocol() {
+  if (window.location.protocol === 'https:') {
+    return 'wss://';
+  } else {
+    return 'ws://';
+  }
+}
+
 export function Chat() {
   const [messages, setMessages] = useState<MessageProps[]>([]);
   const [inputValue, setInputValue] = useState('');
@@ -13,7 +21,7 @@ export function Chat() {
 
   // Initialize WebSocket connection
   useEffect(() => {
-    ws.current = new WebSocket('ws://' + window.location.host + '/mcp_bridge/ws');
+    ws.current = new WebSocket(websocketProtocol() + window.location.host + '/mcp_bridge/ws');
 
     ws.current.onopen = () => {
       console.log('WebSocket connection established');
