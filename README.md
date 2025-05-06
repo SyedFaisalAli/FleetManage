@@ -98,7 +98,7 @@ FleetManage/
     ├── README.md              # MCP server documentation
     ├── requirements.txt       # Python dependencies
     ├── setup.py               # Package setup script
-    └── network_diagnostics_server/  # MCP server implementation
+    └── netmcp/  # MCP server implementation
         ├── __init__.py
         ├── server.py          # Main server file
         ├── network_tools.py   # Network diagnostic tools
