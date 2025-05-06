@@ -46,7 +46,8 @@ def main():
     parser = argparse.ArgumentParser(description='NetMCP Server')
     parser.add_argument('--config', type=str, help='Path to the configuration file')
     args = parser.parse_args()
-    load_config(args.config)
+    if args.config is not None:
+        load_config(args.config)
 
     try:
         uvicorn.run(app, host=CONFIG.get('host', '127.0.0.1'), port=CONFIG.get('port', 8000))
