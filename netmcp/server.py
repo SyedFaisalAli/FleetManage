@@ -50,7 +50,7 @@ def main():
         load_config(args.config)
 
     try:
-        uvicorn.run(app, host=CONFIG.get('host', '127.0.0.1'), port=CONFIG.get('port', 8000))
+        uvicorn.run(app, host=CONFIG.get('host', '0.0.0.0'), port=CONFIG.get('port', 8000))
     except KeyboardInterrupt:
         sys.exit(0)
 
