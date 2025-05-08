@@ -1,6 +1,6 @@
 # NetAssist
 
-   [ [Report](https://github.com/SyedFaisalAli/NetAssist/blob/1573200ea6de4d9a29c4ceae7bfb9350696bf23f/report.pdf) ] [ [Video](https://youtu.be/Bo1_-jrvnLw) ]
+   [ [Report](https://github.com/SyedFaisalAli/NetAssist/blob/1573200ea6de4d9a29c4ceae7bfb9350696bf23f/report.pdf) ] [ [Video](https://youtu.be/i4Ir9Ms-DX0) ]
 
 NetAssist is a local agent to assist with network troubleshooting, focusing on systemd-networkd configurations within. It uses a client-server architecture with the Model Context Protocol (MCP) for communication, intended to interface with an Small Language Model (SLM) running locally on the same device. A built-in web console is provided for user-interaction.
 
