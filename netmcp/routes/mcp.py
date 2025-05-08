@@ -145,11 +145,11 @@ async def diagnose_connectivity(target: str = "8.8.8.8", ctx: Context = None) ->
 
 @mcp.tool(
     description="Get the network status of the all interfaces",
-    tags=["dhcp", "dns"]
+    tags=["dhcp", "dns"],
 )
 async def get_network_status(interface: str = "", ctx: Context = None) -> Dict[str, Any]:
     """
-    Get the network status of a given interface.
+    Get the network status.
 
     Args:
         interface: Optional name of the network interface to get status for
