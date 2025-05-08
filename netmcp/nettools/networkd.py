@@ -14,16 +14,19 @@ import subprocess
 logger = logging.getLogger("netmcp")
 
 
-async def get_network_status_impl(interface: str, output_json=False) -> Dict[str, Any]:
+async def get_network_status_impl(interface: str = None, output_json=False) -> Dict[str, Any]:
+    args = [
+        "networkctl",
+        f"--json={'short' if output_json else 'off'}",
+        "status",
+    ]
+    if interface is not "":
+        args.append(interface)
+
     try:
         # Run the networkctl status command and capture its output
         result = subprocess.run(
-            [
-                "networkctl",
-                f"--json={'short' if output_json else 'off'}",
-                "status",
-                interface,
-            ],
+            args,
             check=True,
             text=True,
             capture_output=True,
