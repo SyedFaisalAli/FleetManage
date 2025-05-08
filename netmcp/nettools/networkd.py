@@ -20,7 +20,7 @@ async def get_network_status_impl(interface: str = None, output_json=False) -> D
         f"--json={'short' if output_json else 'off'}",
         "status",
     ]
-    if interface is not None:
+    if interface is not "":
         args.append(interface)
 
     try:
