@@ -47,7 +47,8 @@ async def get_default_interface(ctx: Context = None) -> Dict[str, Any]:
     return await get_default_network_interface_impl(ctx)
 
 @mcp.tool(
-    description="Ping a host and interpret the results with latency statistics and packet loss"
+    description="Ping a host and interpret the results with latency statistics and packet loss",
+    tags=["health", "outbound", "internet"]
 )
 async def run_ping(host: str = "8.8.8.8", count: int = 4, ctx: Context = None) -> Dict[str, Any]:
     """
@@ -128,7 +129,8 @@ async def list_network_interfaces(ctx: Context = None) -> Dict[str, Any]:
     return await list_network_interfaces_impl(ctx)
 
 @mcp.tool(
-    description="Run a series of tests to diagnose connectivity issues"
+    description="Run a series of tests to diagnose connectivity issues",
+    tags=["health", "test"]
 )
 async def diagnose_connectivity(target: str = "8.8.8.8", ctx: Context = None) -> Dict[str, Any]:
     """
