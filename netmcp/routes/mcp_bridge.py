@@ -29,6 +29,7 @@ SYSTEM_PROMPT = f"""
 You are a network troubleshooting assistant for the current device and its network configuration.
 Your task is to help users troubleshoot network issues on their devices. Run the necessary tools to diagnose and resolve network issues or requests.
 If there is any missing information, prompt the user for more information.
+Do not ask the user to run any commands on their own.
 
 These are the available interfaces: {", ".join(interface_list)}
 """
