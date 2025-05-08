@@ -11,7 +11,7 @@ from fastmcp.exceptions import ClientError
 from qwen_agent.llm import get_chat_model
 from qwen_agent.utils.output_beautify import typewriter_print
 from .mcp import mcp
-from ..config import CONFIG
+from ..config import get_config
 log = logging.getLogger('netmcp')
 
 SSE_URL = "http://localhost:8000/sse"
@@ -49,7 +49,7 @@ def fastmcp_tool_to_openai_schema(tool: Tool) -> dict:
     }
 
 def init_agent_service():
-    return get_chat_model(CONFIG.get("modelcfg", DEFAULT_MODEL_CONFIG))
+    return get_chat_model(get_config("modelcfg", DEFAULT_MODEL_CONFIG))
 
 @mcp_bridge_router.websocket_route("/ws")
 async def mcp_bridge(websocket: WebSocket):

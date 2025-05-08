@@ -10,9 +10,8 @@ from .routes.api import api
 from .routes.mcp_bridge import mcp_bridge_router
 from fastapi import routing
 from fastapi.middleware.cors import CORSMiddleware
-from .config import CONFIG
 from fastapi.staticfiles import StaticFiles
-from .config import load_config
+from .config import load_config, get_config
 
 log = logging.getLogger('netmcp')
 handler = logging.StreamHandler()
@@ -50,7 +49,7 @@ def main():
         load_config(args.config)
 
     try:
-        uvicorn.run(app, host=CONFIG.get('host', '0.0.0.0'), port=CONFIG.get('port', 8000))
+        uvicorn.run(app, host=get_config('host', '127.0.0.1'), port=get_config('port', 8000))
     except KeyboardInterrupt:
         sys.exit(0)
 
