@@ -20,9 +20,6 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 handler.setFormatter(formatter)
 log.addHandler(handler)
 
-
-origins = CONFIG.get("origins", [])
-
 app = fastapi.FastAPI(
     redirect_slashes=True,
     routes=[
@@ -35,7 +32,6 @@ app = fastapi.FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
